@@ -8,8 +8,7 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    public function index()
-    {
+    
        /*$data =[
         'username' => 'customer-1',
         'nama' => 'Pelanggan',
@@ -25,10 +24,9 @@ class UserController extends Controller
             'nama' => 'Pelanggan Pertama'
         ];
         UserModel::where ('username', 'customer-1')->update($data);*/
-
-        
-
-        $user = UserModel::where('username', 'manager9')->firstOrFail();
-        return view('user', ['data'=> $user]);
+     public function index()
+     {
+        $jumlahUser = UserModel::where('level_id', 2)->count();
+        return view('user', ['jumlahUser' => $jumlahUser]);
     }
 }
