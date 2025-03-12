@@ -26,15 +26,31 @@ class UserController extends Controller
         UserModel::where ('username', 'customer-1')->update($data);*/
      public function index()
      {
-        $user = UserModel::firstOrNew(
+        $user = UserModel::create(
             [
-                'username' => 'manager33',
-                'nama' => 'Manager Tiga Tiga',
+                'username' => 'manager55',
+                'nama' => 'Manager55',
                 'password' => Hash::make('12345'),
                 'level_id' => 2
             ],
         );
-        $user-> save();
-        return view('user', ['data' => $user]);
+        $user-> username = 'manager56';
+        
+        $user->isDirty(); //true
+        $user->isDirty('username'); //true
+        $user->isDirty('nama'); //fales
+        $user->isDirty(['nama', 'username']); //true
+
+        $user->isClean(); //fales
+        $user->isClean('username'); //fales
+        $user->isClean('nama'); //true
+        $user->isClean(['nama', 'username']); //fales
+
+        $user->save();
+
+        $user->isDirty(); //fales
+        $user->isClean();//true
+        dd($user->isDirty());
+
     }
 }
