@@ -8,40 +8,16 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    
-       /*$data =[
-        'username' => 'customer-1',
-        'nama' => 'Pelanggan',
-        'password' => Hash::make('12345'),
-        'level_id' => 4
-       ];
-       UserModel::insert($data);
+    public function index()
+    {
+        $user = UserModel::all();
+        return view('user', ['data' => $user]);
+    }
 
-       $user = UserModel::all();
-       return view('user', ['data'=> $user]);*/
-
-        /*$data = [
-            'nama' => 'Pelanggan Pertama'
-        ];
-        UserModel::where ('username', 'customer-1')->update($data);*/
-     public function index()
-     {
-        $user = UserModel::create(
-            [
-                'username' => 'manager11',
-                'nama' => 'Manager11',
-                'password' => Hash::make('12345'),
-                'level_id' => 2
-            ],
-        );
-        $user-> username = 'manager12';
-        $user->save();
-
-        $user->wasChanged(); ///true
-        $user->wasChanged('username'); //true
-        $user->wasChanged(['nama', 'level_id']); //true
-        $user->wasChanged('nama'); //false
-        dd($user->wasChanged(['nama', 'username'])); //true
-
+    public function tambah()
+    {
+        return view('user_tambah');
     }
 }
+
+?>
