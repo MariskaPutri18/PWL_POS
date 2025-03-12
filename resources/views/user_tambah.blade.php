@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Data User</title>
+    <title>Form Tambah Data User</title>
 </head>
 <body>
    <h1>Form Tambah Data User</h1> 
-   <form method="post" action="/user/tambah_simpan">
-    {{ csrf_field() }}  
+   <form method="post" action="{{ route('user.tambah_simpan') }}">
+    @csrf
 
     <label>Username</label>
     <input type="text" name="username" placeholder="Masukkan Username">
