@@ -18,3 +18,7 @@ Route::match(['put', 'post'], '/user/ubah_simpan/{id}', [UserController::class, 
 Route::get('/user/hapus/{id}', [UserController::class, 'hapus'])->where('id', '[0-9]+')->name('user.hapus');
 
 ?>
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
