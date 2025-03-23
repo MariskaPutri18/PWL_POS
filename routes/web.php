@@ -21,7 +21,11 @@ Route::get('/user/hapus/{id}', [UserController::class, 'hapus'])->where('id', '[
 
 // Route untuk Kategori
 Route::get('/kategori', [KategoriController::class, 'index'])->name('kategori.index');
-
+Route::get('/kategori/create', [KategoriController::class, 'create']);
+Route::post('/kategori', [KategoriController::class, 'store'])->name('kategori.store'); 
+Route::get('/kategori/edit/{id}',[KategoriController::class, 'edit'])->name('kategori.edit');
+Route::put('/kategori/update/{id}',[KategoriController::class, 'update'])->name('kategori.update');
+Route::delete('/kategori/{id}', [KategoriController::class, 'destroy'])->name('kategori.destroy');
 // Tambahkan ini untuk menghindari error
 Auth::routes();
 

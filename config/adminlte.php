@@ -309,6 +309,16 @@ return [
             'type' => 'fullscreen-widget',
             'topnav_right' => true,
         ],
+        [
+            'text'=> 'Dashboard',
+            'url' => '/',
+            'icon'=> 'fas fa-home',
+        ],
+        [
+            'text'=> 'Manage Kategori',
+            'url' => 'kategori',
+            'icon'=> 'fas fa-list',
+        ],
 
         // Sidebar items:
         [

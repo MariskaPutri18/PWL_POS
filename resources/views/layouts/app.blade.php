@@ -26,6 +26,7 @@
     @endif
 @stop
 
+
 {{-- Rename section content to content_body --}}
 
 @section('content')
@@ -78,5 +79,31 @@
     */
 
 </style>
+@push('js')
+    <script>
+        $(document).ready(function () {
+            $(document).on('click', '.delete-btn', function () {
+                let id = $(this).data('id');
+
+                if (confirm('Apakah Anda yakin ingin menghapus kategori ini?')) {
+                    $.ajax({
+                        url: "{{ url('kategori') }}/" + id,
+                        type: 'POST',
+                        data: {
+                            _method: 'DELETE',
+                            _token: '{{ csrf_token() }}'
+                        },
+                        success: function (response) {
+                            alert(response.success);
+                            $('#kategori-table').DataTable().ajax.reload(); // Reload DataTable
+                        },
+                        error: function (xhr) {
+                            alert('Gagal menghapus kategori!');
+                        }
+                    });
+                }
+            });
+        });
+    </script>
 
 @endpush
